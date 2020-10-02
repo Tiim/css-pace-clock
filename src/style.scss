@@ -1,0 +1,114 @@
+// Options
+$black: #1b1e23;
+$size: 300px;
+$indicator-long: black;
+$indicator-short: grey;
+$indicator-center: transparent;
+$feature1: red;
+$feature2: black;
+$bg: transparent;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background: $bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  color: white;
+}
+
+p {
+  color: $indicator-long;
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
+.clock {
+  height: $size;
+  width: $size;
+  border-radius: #{$size / 2};
+  display: flex;
+  justify-content: center;
+  position: relative;
+  &__second,
+  &__indicator {
+    position: absolute;
+    left: calc(50% - 1px);
+    width: 2px;
+    background: $indicator-long;
+    transform-origin: bottom center;
+    z-index: 2;
+    border-radius: 1px;
+  }
+  &__second {
+    height: #{($size) - 20};
+    //height: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    //background: $feature1;
+    background: transparent;
+    animation: time 60s infinite;
+    animation-timing-function: linear;
+    z-index: 3;
+    transform-origin: center;
+  }
+  &__second:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: #{($size / 2)} solid $feature1;
+    transform: translate(-10px, 10px)
+  }
+    &__second:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: #{($size / 2)} solid $feature2;
+      transform: translate(-10px, #{- $size / 2  + 10})
+  }
+  &__indicator {
+    height: #{($size / 2) - 2};
+    border-top: 2px solid $indicator-short;
+    background: none;
+  }
+
+  &__indicator:nth-of-type(5n) {
+    opacity: 1;
+    height: #{($size / 2) - 7};
+    border-top: 7px solid $indicator-long;
+  }
+  &__axis {
+    background: $indicator-center;
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 4;
+    top: #{$size / 2 - 3};
+  }
+}
+
+@for $i from 1 through 60 {
+  section:nth-of-type(#{$i}) {
+    transform: rotateZ(calc(6deg * #{$i}));
+  }
+}
+
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
