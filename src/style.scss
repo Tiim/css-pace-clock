@@ -7,6 +7,8 @@ $indicator-center: transparent;
 $feature1: red;
 $feature2: black;
 $bg: transparent;
+$clock-bg: white;
+$padding: 20px;
 
 html,
 body {
@@ -31,10 +33,12 @@ p {
 .clock {
   height: $size;
   width: $size;
-  border-radius: #{$size / 2};
+  border-radius: #{($size / 2) + $padding};
   display: flex;
   justify-content: center;
   position: relative;
+  background: $clock-bg;
+  padding: $padding;
   &__second,
   &__indicator {
     position: absolute;

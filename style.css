@@ -22,10 +22,12 @@ p {
 .clock {
   height: 300px;
   width: 300px;
-  border-radius: 150px;
+  border-radius: 170px;
   display: flex;
   justify-content: center;
   position: relative;
+  background: white;
+  padding: 20px;
 }
 .clock__second, .clock__indicator {
   position: absolute;
