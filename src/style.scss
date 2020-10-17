@@ -1,13 +1,15 @@
 // Options
 $black: #1b1e23;
-$size: 300px;
+$size: 500px;
+$base-size: 500px;
 
-$indicator-width: 4px;
-$indicator-height: 4px;
-$indicator-5s-height: 14px;
-$indicator-15s-height: 20px;
-$indicator-15s-width: 6px;
-$indicator-5s: black;
+$_indicator-width: 6px;
+$_indicator-height: 6px;
+$_indicator-5s-height: 24px;
+$_indicator-15s-height: 36px;
+$_indicator-15s-width: 10px;
+$_seconds-width-center: 20px;
+$indicator-5s: darken(grey, 15%);
 $indicator-15s: black;
 $indicator-short: grey;
 $indicator-center: transparent;
@@ -16,6 +18,13 @@ $feature2: black;
 $bg: transparent;
 $clock-bg: white;
 $padding: 20px;
+
+$indicator-width: $_indicator-width * $size / $base-size;
+$indicator-height: $_indicator-height  * $size / $base-size;
+$indicator-5s-height: $_indicator-5s-height  * $size / $base-size;
+$indicator-15s-height: $_indicator-15s-height  * $size / $base-size;
+$indicator-15s-width: $_indicator-15s-width  * $size / $base-size;
+$seconds-width-center: $_seconds-width-center  * $size / $base-size;
 
 html,
 body {
@@ -50,7 +59,7 @@ p {
   &__indicator {
     position: absolute;
     left: calc(50% - 1px);
-    width: $indicator-width;
+    width: $_indicator-width;
     background: $indicator-5s;
     transform-origin: bottom center;
     z-index: 2;
@@ -74,10 +83,10 @@ p {
     width: 0;
     height: 0;
     bottom: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-left: $seconds-width-center solid transparent;
+    border-right: $seconds-width-center solid transparent;
     border-top: #{($size / 2)} solid $feature1;
-    transform: translate(-10px, 10px)
+    transform: translate(-$seconds-width-center, 10px)
   }
     &__second:before {
     position: absolute;
@@ -85,13 +94,13 @@ p {
     width: 0;
     height: 0;
     bottom: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-left: $seconds-width-center solid transparent;
+    border-right: $seconds-width-center solid transparent;
     border-bottom: #{($size / 2)} solid $feature2;
-      transform: translate(-10px, #{- $size / 2  + 10})
+    transform: translate(-$seconds-width-center, #{- $size / 2  + 10})
   }
   &__indicator {
-    height: #{($size / 2) - $indicator-height};
+    height: #{(($size / 2) - $indicator-height) }; 
     border-top: $indicator-height solid $indicator-short;
     background: none;
   }

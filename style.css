@@ -14,15 +14,15 @@ body {
 }
 
 p {
-  color: black;
+  color: #5a5a5a;
   font-size: 0.8em;
   opacity: 0.75;
 }
 
 .clock {
-  height: 300px;
-  width: 300px;
-  border-radius: 170px;
+  height: 500px;
+  width: 500px;
+  border-radius: 270px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -32,14 +32,14 @@ p {
 .clock__second, .clock__indicator {
   position: absolute;
   left: calc(50% - 1px);
-  width: 4px;
-  background: black;
+  width: 6px;
+  background: #5a5a5a;
   transform-origin: bottom center;
   z-index: 2;
   border-radius: 1px;
 }
 .clock__second {
-  height: 280px;
+  height: 480px;
   margin-top: 10px;
   margin-bottom: 10px;
   background: transparent;
@@ -54,10 +54,10 @@ p {
   width: 0;
   height: 0;
   bottom: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 150px solid red;
-  transform: translate(-10px, 10px);
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 250px solid red;
+  transform: translate(-20px, 10px);
 }
 .clock__second:before {
   position: absolute;
@@ -65,26 +65,26 @@ p {
   width: 0;
   height: 0;
   bottom: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 150px solid black;
-  transform: translate(-10px, -140px);
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 250px solid black;
+  transform: translate(-20px, -240px);
 }
 .clock__indicator {
-  height: 146px;
-  border-top: 4px solid grey;
+  height: 244px;
+  border-top: 6px solid grey;
   background: none;
 }
 .clock__indicator:nth-of-type(5n) {
   opacity: 1;
-  height: 136px;
-  border-top: 14px solid black;
+  height: 226px;
+  border-top: 24px solid #5a5a5a;
 }
 .clock__indicator:nth-of-type(15n) {
   opacity: 1;
-  width: 6px;
-  height: 130px;
-  border-top: 20px solid black;
+  width: 10px;
+  height: 214px;
+  border-top: 36px solid black;
 }
 .clock__axis {
   background: transparent;
@@ -93,7 +93,7 @@ p {
   border-radius: 3px;
   position: absolute;
   z-index: 4;
-  top: 147px;
+  top: 247px;
 }
 
 section:nth-of-type(1) {
