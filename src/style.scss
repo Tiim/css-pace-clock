@@ -1,7 +1,14 @@
 // Options
 $black: #1b1e23;
 $size: 300px;
-$indicator-long: black;
+
+$indicator-width: 4px;
+$indicator-height: 4px;
+$indicator-5s-height: 14px;
+$indicator-15s-height: 20px;
+$indicator-15s-width: 6px;
+$indicator-5s: black;
+$indicator-15s: black;
 $indicator-short: grey;
 $indicator-center: transparent;
 $feature1: red;
@@ -25,7 +32,7 @@ body {
 }
 
 p {
-  color: $indicator-long;
+  color: $indicator-5s;
   font-size: 0.8em;
   opacity: 0.75;
 }
@@ -43,8 +50,8 @@ p {
   &__indicator {
     position: absolute;
     left: calc(50% - 1px);
-    width: 2px;
-    background: $indicator-long;
+    width: $indicator-width;
+    background: $indicator-5s;
     transform-origin: bottom center;
     z-index: 2;
     border-radius: 1px;
@@ -84,15 +91,21 @@ p {
       transform: translate(-10px, #{- $size / 2  + 10})
   }
   &__indicator {
-    height: #{($size / 2) - 2};
-    border-top: 2px solid $indicator-short;
+    height: #{($size / 2) - $indicator-height};
+    border-top: $indicator-height solid $indicator-short;
     background: none;
   }
 
   &__indicator:nth-of-type(5n) {
     opacity: 1;
-    height: #{($size / 2) - 7};
-    border-top: 7px solid $indicator-long;
+    height: #{($size / 2) - $indicator-5s-height};
+    border-top: $indicator-5s-height solid $indicator-5s;
+  }
+    &__indicator:nth-of-type(15n) {
+    opacity: 1;
+    width: $indicator-15s-width;
+    height: #{($size / 2) - $indicator-15s-height};
+    border-top: $indicator-15s-height solid $indicator-15s;
   }
   &__axis {
     background: $indicator-center;
