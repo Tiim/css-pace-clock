@@ -1,19 +1,32 @@
-// Javascript is used to set the clock to your computer time.
 
-//setInterval(() => setTime(), 1000);
+const urlParams = new URLSearchParams(window.location.search);
+const remoteTime = !!urlParams.get('remote_time');
 
-setTime(); 
+setTime({remoteTime}); 
 
-function setTime() {
-  const sec = ((getSeconds() / 60) % 1) * 60;
+async function setTime(options) {
+  const sec = ((await getSeconds(options.remoteTime) / 60) % 1) * 60;
   $(".clock__second").css("animation-delay", "" + sec * -1 + "s");
 } 
 
-function getSeconds() {
-  let now = new Date();
-
-  let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-  let diff = now - today; 
+async function getSeconds(remoteTime) {
+  let now;
+  if (remoteTime) {
+    now = await getRemoteDate();
+  } else {
+    now = new Date();
+  }
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const diff = now - today; 
   return Math.round(diff / 1000);
+}
+
+async function getRemoteDate() {
+  try {
+    const res = await fetch('http://worldtimeapi.org/api/ip').then(r => r.json());
+    return new Date(res.datetime)
+  } catch (e) {
+    console.log(e);
+    return new Date();
+  }
 }
