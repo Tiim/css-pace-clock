@@ -23,7 +23,7 @@ async function getSeconds(remoteTime) {
 
 async function getRemoteDate() {
   try {
-    const res = await fetch('http://worldtimeapi.org/api/ip').then(r => r.json());
+    const res = await fetch('https://worldtimeapi.org/api/ip').then(r => r.json());
     return new Date(res.datetime)
   } catch (e) {
     console.log(e);
